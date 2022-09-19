@@ -1,4 +1,4 @@
-public class Truck extends WheeledTransport {
+public class Truck extends WheeledTransport implements Service{
 
 
     public Truck(String modelName, int wheelsCount) {
@@ -7,14 +7,24 @@ public class Truck extends WheeledTransport {
     }
 
     public void updateTyre() {
-        System.out.println("Меняем покрышку");
+        System.out.println("Меняем покрышку у грузовика");
     }
 
     public void checkEngine() {
-        System.out.println("Проверяем двигатель");
+        System.out.println("Проверяем двигатель у грузовика");
     }
 
     public void checkTrailer() {
         System.out.println("Проверяем прицеп");
+    }
+
+    @Override
+    public void check() {
+        System.out.println("Обслуживаем " + getModelName());
+        for (int i = 0; i < getWheelsCount(); i++) {
+            updateTyre();
+        }
+        checkEngine();
+        checkTrailer();
     }
 }
